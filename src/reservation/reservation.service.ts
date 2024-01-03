@@ -19,15 +19,15 @@ export class ReservationService {
   ) {}
 
   // 특정 유저 예약 현황 확인
-  async userReservationCheck(username: string) {
-    console.log(username);
-    const userResultRes = await this.reservationRpository.find({
-      where: { username: username },
-      select: ['showtitle', 'reservationname', 'venue'],
-    });
+  // async userReservationCheck(username: string) {
+  //   console.log(username);
+  //   const userResultRes = await this.reservationRpository.find({
+  //     where: { username: username },
+  //     select: ['showtitle', 'reservationname', 'venue'],
+  //   });
 
-    return userResultRes;
-  }
+  //   return userResultRes;
+  // }
 
   // 특정 공연 예약자 확인
   async showReservationCheck(showid: number) {

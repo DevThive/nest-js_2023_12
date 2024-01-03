@@ -10,13 +10,13 @@ import { findreservationDto } from './dto/find-reservation.dto';
 export class ReservationController {
   constructor(private readonly reservationService: ReservationService) {}
 
-  //예약 확인
-  @Post()
-  async userResrvationCheck(@Body() findreservation: findreservationDto) {
-    return await this.reservationService.userReservationCheck(
-      findreservation.username,
-    );
-  }
+  // 특정 유저 예약 확인
+  // @Post()
+  // async userResrvationCheck(@Body() findreservation: findreservationDto) {
+  //   return await this.reservationService.userReservationCheck(
+  //     findreservation.username,
+  //   );
+  // }
 
   //로그인 유저 예약 현황
   //   @Get('/reservation/check')
