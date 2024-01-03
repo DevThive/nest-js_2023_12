@@ -12,6 +12,7 @@ import {
 } from 'typeorm';
 import { showDate } from './showtime.entity';
 import { Reservation } from 'src/reservation/entity/reservation.entity';
+// import { Seat } from 'src/reservation/entity/seat.entity';
 
 @Entity({
   name: 'shows',
@@ -59,6 +60,9 @@ export class Show {
 
   @OneToMany(() => Reservation, (reservat) => reservat.show)
   reservation: Reservation[];
+
+  // @OneToMany(() => Seat, (seat) => seat.show)
+  // seats: Seat[];
 
   @Column({ type: 'varchar', nullable: false })
   category: string;

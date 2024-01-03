@@ -46,9 +46,13 @@ export class ReservationController {
   }
 
   //예약취소
-  //   @Delete('showid/:showid/:reservid')
-  //   async deleteReservation(
-  //     @Param('showid') showid: number,
-  //     @Param('reservid') reservid: number,
-  //   ) {}
+  @UseGuards(AuthGuard('jwt'))
+  @Post('showid/:showid/:reservid')
+  async cancel(
+    @Param('showid') showid: number,
+    @Param('reservid') reservid: number,
+    @UserInfo() user: User,
+  ) {
+    return await this.reservationService.cancel(showid, reservid, user);
+  }
 }

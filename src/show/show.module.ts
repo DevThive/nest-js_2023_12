@@ -5,9 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Show } from './entities/show.entity';
 import { showDate } from './entities/showtime.entity';
+import { Seat } from 'src/reservation/entity/seat.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Show, showDate])],
+  imports: [TypeOrmModule.forFeature([Show, showDate, Seat])],
   controllers: [ShowController],
   providers: [ShowService],
 })

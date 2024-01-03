@@ -3,12 +3,14 @@ import {
   CreateDateColumn,
   Entity,
   Index,
+  OneToMany,
   //   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 import { Role } from '../types/userRole.type';
+import { Seat } from 'src/reservation/entity/seat.entity';
 
 @Index('email', ['email'], { unique: true })
 @Entity({
@@ -32,6 +34,9 @@ export class User {
 
   @Column({ type: 'enum', enum: Role, default: Role.User })
   role: Role;
+
+  @OneToMany(() => Seat, (seat) => seat.reserv)
+  reserv: Seat;
 
   @CreateDateColumn()
   createdAt: Date;

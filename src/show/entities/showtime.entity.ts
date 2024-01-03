@@ -1,6 +1,7 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Show } from './show.entity';
 import { Exclude } from 'class-transformer';
+import { Reservation } from 'src/reservation/entity/reservation.entity';
 
 @Entity({
   name: 'dateAndTime',
@@ -17,4 +18,7 @@ export class showDate {
   })
   @Exclude({ toPlainOnly: true })
   show: Show;
+
+  @ManyToOne(() => Reservation, (reservation) => reservation.showdate)
+  reservation: Reservation;
 }

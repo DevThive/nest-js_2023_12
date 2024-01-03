@@ -17,6 +17,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Show } from './entities/show.entity';
 import { createShowDto } from './dto/create-show.dto';
 import { showDate } from './entities/showtime.entity';
+import { Seat } from 'src/reservation/entity/seat.entity';
 
 @Injectable()
 export class ShowService {
@@ -25,6 +26,7 @@ export class ShowService {
     private showRepository: Repository<Show>,
     @InjectRepository(showDate)
     private timeRepository: Repository<showDate>,
+    @InjectRepository(Seat) private seatRepository: Repository<Seat>,
     // @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {}
   // 공연 조회
@@ -71,6 +73,8 @@ export class ShowService {
       date.show = savedShow;
       await this.timeRepository.save(date);
     }
+
+    await this.addSeats(show.id);
     // console.log(savedShow);
 
     return savedShow;
@@ -78,6 +82,17 @@ export class ShowService {
 
   async findOneByShow(title: string) {
     return await this.showRepository.findOneBy({ title });
+  }
+
+  //공연 좌석 생성
+  async addSeats(showid: number) {
+    for (let i = 1; i <= 50; i++) {
+      const seat = new Seat();
+      seat.setnum = i;
+      seat.isReserved = false;
+      seat.showid = showid;
+      await this.seatRepository.save(seat);
+    }
   }
 
   //공연 검색
