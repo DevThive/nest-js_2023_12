@@ -15,14 +15,14 @@ DB_SYNC
 JWT_SECRET_KEY
 
 
-API
+# API
 
-#로그인
+로그인
 
 localhost:3000/user/login
 
 
-#회원가입
+회원가입
 
 localhost:3000/user/register
 
