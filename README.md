@@ -24,6 +24,7 @@ localhost:3000/user/:nickname
 
 공연등록
 localhost:3000/show
+
 Ex)
 "title": "test1",
 "description" : "테스트 공연 소개입니다.",
